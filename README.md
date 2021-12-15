@@ -32,7 +32,8 @@ HTML and J's files (provided on this URL) and once you have done.
 ---
 
 ### How to use
-using the port provided in the terminal,“localhost:8000”
+
+using the port provided in the terminal,“localhost:8000” and HTML page showen below will appear accordingly.
 ---
 ## Release (0.0.0)
 ![Terminal](Screen%20Shot%202021-12-15%20at%2011.59.03%20PM.png)
