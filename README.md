@@ -32,7 +32,9 @@ HTML and J's files (provided on this URL) and once you have done.
 ---
 
 ### How to use
-[Output](screenscreen.JPG)
+using the port provided in the terminal,“localhost:8000”
+
+![Output](screenscreen.JPG)
 
 ---
 
