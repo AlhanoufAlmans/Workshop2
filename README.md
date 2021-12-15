@@ -35,7 +35,7 @@ HTML and J's files (provided on this URL) and once you have done.
 using the port provided in the terminal,“localhost:8000”
 ---
 ## Release (0.0.0)
-![Screen Shot 2021-12-15 at 11 59 03 PM]
+![Terminal](Screen Shot 2021-12-15 at 11.59.03 PM.png)
 
 ## Release (0.0.1)
 ![Output](screenscreen.JPG)
