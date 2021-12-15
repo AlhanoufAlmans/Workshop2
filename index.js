@@ -32,20 +32,20 @@ app.get('/fasttext/', function(req, res) {
 });
 
 function getFastTextResults(statement) {
-	//predict returns an array with the input and predictions for best cateogires
-	FastText.predict(
-		"model.bin", 3,
-		[statement],
-		function (success, error) {
-
-		  if(error) {
-			console.log(error)
-			return;
-		  }
-		  console.log(success)
-		})
-	return "success!";
+  var result = null
+FastText.predict(
+"model.bin", 3,
+[statement],
+function(success, error){
+if(error){
+  console.log(error)
+return;
 }
+result= success
+})
+return result;
+}
+
 
 app.listen(8000, () => {
   console.log('Listening on port 8000!')
