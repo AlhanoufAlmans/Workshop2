@@ -2,15 +2,147 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Your front-end</title>
+<title>food text predictor</title>
+    
+<style>
+	body {background-color: powderblue;}
+h1 {
+  text-align: center;
+  color: darkolivegreen;
+} 
+h2 {
+  text-align: center;
+  color: darkolivegreen;
+  padding-top: 10px;
+}
+h3 {
+  text-align: right;
+    }
+.myDiv {
+  border: 5px outset darkolivegreen;
+  background-color: plum;
+  text-align: center;
+}
+
+
+input[type=text], select {
+  width: 40%;
+  padding: 20px 15px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+
+th, td, p, input {
+	font-family: Arial, sans-serif;
+        }
+table, th, td 
+        {
+            border: solid 1px #DDD;
+            border-collapse: collapse;
+            padding: 2px 3px;
+            text-align: center;
+        }
+th {
+            font-weight: bolder;
+        }
+
+
+	</style>
+
 </head>
 
 <body>
-<form action="/fasttext">
-	Enter your text to be classified<br>
-	<input type="text" name="statement">
-	<input type="submit" value="Submit">
-</form> 
+
+	<a href="default.asp">
+	
+		<h3><img right src="https://units.imamu.edu.sa/colleges/ComputerAndInformation/announcements/PublishingImages/14380607001_1.png" alt="HTML tutorial" style="width:100px;height:100px;"></a> </h3>
+	<h1>Food Predictor</h1>
+	
+
+	
+	<div class="myDiv">
+	<h2>Enter your text </h2><br>
+	<form>
+	<input id ="statement" type="text" name="statement"><br><br> 
+	<input type="button" value="Submit" onClick="changeIt()">
+	<input type="reset"value="clear"></form>
+	 
+    <p id="showData"></p>
+	</div>
+
+
+<script type="text/javascript">
+
+	
+
+	function changeIt() {
+
+
+		var term = document.getElementById("statement").value; 
+    	var url = 'http://localhost:8000/fasttext?statement=' + term;
+    	// Now send a request to your Node program
+        fetch(url).then(res=>res.text()).then(text=> document.getElementById("my_div").innerHTML = convert_to_table(text) )
+		
+	}
+
+
+	function convert_to_table (text){ 
+		const roww = JSON.parse(text);
+	for (var r in roww){
+		delete roww[r]["value"];
+	}
+
+
+	// EXTRACT VALUE FOR HTML HEADER. 
+	
+	var col = [];
+	for (var i = 0; i < roww.length; i++) {
+		for (var key in roww[i]) {
+			if (col.indexOf(key) === -1) {
+				col.push(key);
+			}
+		}
+	}
+
+
+	// CREATE DYNAMIC TABLE.
+	var table = document.createElement("table");
+
+	// CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
+
+	var tr = table.insertRow(-1);                   // TABLE ROW.
+
+	for (var i = 0; i < col.length; i++) {
+		var th = document.createElement("th");      // TABLE HEADER.
+		th.innerHTML = col[i];
+		tr.appendChild(th);
+	}
+
+	// ADD JSON DATA TO THE TABLE AS ROWS.
+	for (var i = 0; i < roww.length; i++) {
+
+		tr = table.insertRow(-1);
+
+		for (var j = 0; j < col.length; j++) {
+			var tabCell = tr.insertCell(-1);
+			tabCell.innerHTML = roww[i][col[j]];
+		}
+	}
+
+	// FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
+	var divContainer = document.getElementById("showData");
+	divContainer.innerHTML = "";
+	divContainer.appendChild(table);
+	return "";
+	}
+	</script>
+	<div id="my_div"></div>
+	
+
 
 </body>
 
