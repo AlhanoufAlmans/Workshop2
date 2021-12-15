@@ -36,7 +36,7 @@ using the port provided in the terminal,“localhost:8000”
 ---
 ## Release (0.0.0)
 ![Terminal](Screen%20Shot%202021-12-15%20at%2011.59.03%20PM.png)
-![Final] (Screen%20Shot%202021-12-16%20at%2012.06.52%20AM.png)
+![Final](Screen%20Shot%202021-12-16%20at%2012.06.52%20AM.png)
 
 ## Release (0.0.1)
 ![Output](screenscreen.JPG)
